@@ -58,30 +58,30 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define LED_GREEN_NORTH_Pin GPIO_PIN_4
-#define LED_GREEN_NORTH_GPIO_Port GPIOA
-#define LED_RED_NORTH_Pin GPIO_PIN_5
-#define LED_RED_NORTH_GPIO_Port GPIOA
-#define LED_YELLOW_NORTH_Pin GPIO_PIN_6
-#define LED_YELLOW_NORTH_GPIO_Port GPIOA
-#define LED_RED_EAST_Pin GPIO_PIN_7
-#define LED_RED_EAST_GPIO_Port GPIOA
-#define LED_GREEN_EAST_Pin GPIO_PIN_8
-#define LED_GREEN_EAST_GPIO_Port GPIOA
-#define LED_YELLOW_EAST_Pin GPIO_PIN_9
-#define LED_YELLOW_EAST_GPIO_Port GPIOA
-#define LED_RED_SOUTH_Pin GPIO_PIN_10
-#define LED_RED_SOUTH_GPIO_Port GPIOA
-#define LED_GREEN_SOUTH_Pin GPIO_PIN_11
-#define LED_GREEN_SOUTH_GPIO_Port GPIOA
-#define LED_YELLOW_SOUTH_Pin GPIO_PIN_12
-#define LED_YELLOW_SOUTH_GPIO_Port GPIOA
-#define LED_RED_WEST_Pin GPIO_PIN_13
-#define LED_RED_WEST_GPIO_Port GPIOA
-#define LED_GREEN_WEST_Pin GPIO_PIN_14
-#define LED_GREEN_WEST_GPIO_Port GPIOA
-#define LED_YELLOW_WEST_Pin GPIO_PIN_15
-#define LED_YELLOW_WEST_GPIO_Port GPIOA
+#define L1_Pin GPIO_PIN_4
+#define L1_GPIO_Port GPIOA
+#define L2_Pin GPIO_PIN_5
+#define L2_GPIO_Port GPIOA
+#define L3_Pin GPIO_PIN_6
+#define L3_GPIO_Port GPIOA
+#define L4_Pin GPIO_PIN_7
+#define L4_GPIO_Port GPIOA
+#define L5_Pin GPIO_PIN_8
+#define L5_GPIO_Port GPIOA
+#define L6_Pin GPIO_PIN_9
+#define L6_GPIO_Port GPIOA
+#define L7_Pin GPIO_PIN_10
+#define L7_GPIO_Port GPIOA
+#define L8_Pin GPIO_PIN_11
+#define L8_GPIO_Port GPIOA
+#define L9_Pin GPIO_PIN_12
+#define L9_GPIO_Port GPIOA
+#define L10_Pin GPIO_PIN_13
+#define L10_GPIO_Port GPIOA
+#define L11_Pin GPIO_PIN_14
+#define L11_GPIO_Port GPIOA
+#define L12_Pin GPIO_PIN_15
+#define L12_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

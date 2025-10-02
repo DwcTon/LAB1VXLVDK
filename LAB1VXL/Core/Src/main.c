@@ -61,6 +61,23 @@ static void MX_GPIO_Init(void);
   * @brief  The application entry point.
   * @retval int
   */
+
+  uint16_t ledPin[12] = {
+    GPIO_PIN_4, GPIO_PIN_5, GPIO_PIN_6, GPIO_PIN_7,
+    GPIO_PIN_8, GPIO_PIN_9, GPIO_PIN_10, GPIO_PIN_11,
+    GPIO_PIN_12, GPIO_PIN_13, GPIO_PIN_14, GPIO_PIN_15
+};
+void Led(int counter) {
+    // Tắt tất cả LED
+    HAL_GPIO_WritePin(GPIOA,
+                      GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7 |
+                      GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10 | GPIO_PIN_11 |
+                      GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15,
+                      GPIO_PIN_SET);
+
+    HAL_GPIO_WritePin(GPIOA, ledPin[counter], GPIO_PIN_RESET);
+}
+
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -91,67 +108,14 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  int counter = 0;
   while (1)
   {
-      HAL_GPIO_WritePin(LED_RED_NORTH_GPIO_Port, LED_RED_NORTH_Pin, GPIO_PIN_RESET);
-      HAL_GPIO_WritePin(LED_YELLOW_NORTH_GPIO_Port, LED_YELLOW_NORTH_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_GREEN_NORTH_GPIO_Port, LED_GREEN_NORTH_Pin, GPIO_PIN_SET);
-
-      HAL_GPIO_WritePin(LED_RED_SOUTH_GPIO_Port, LED_RED_SOUTH_Pin, GPIO_PIN_RESET);
-      HAL_GPIO_WritePin(LED_YELLOW_SOUTH_GPIO_Port, LED_YELLOW_SOUTH_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_GREEN_SOUTH_GPIO_Port, LED_GREEN_SOUTH_Pin, GPIO_PIN_SET);
-
-
-      HAL_GPIO_WritePin(LED_RED_WEST_GPIO_Port, LED_RED_WEST_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_YELLOW_WEST_GPIO_Port, LED_YELLOW_WEST_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_GREEN_WEST_GPIO_Port, LED_GREEN_WEST_Pin, GPIO_PIN_RESET);
-
-      HAL_GPIO_WritePin(LED_RED_EAST_GPIO_Port, LED_RED_EAST_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_YELLOW_EAST_GPIO_Port, LED_YELLOW_EAST_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_GREEN_EAST_GPIO_Port, LED_GREEN_EAST_Pin, GPIO_PIN_RESET);
-
-      HAL_Delay(3000);
-
-      HAL_GPIO_WritePin(LED_RED_WEST_GPIO_Port, LED_RED_WEST_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_YELLOW_WEST_GPIO_Port, LED_YELLOW_WEST_Pin, GPIO_PIN_RESET);
-      HAL_GPIO_WritePin(LED_GREEN_WEST_GPIO_Port, LED_GREEN_WEST_Pin, GPIO_PIN_SET);
-
-      HAL_GPIO_WritePin(LED_RED_EAST_GPIO_Port, LED_RED_EAST_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_YELLOW_EAST_GPIO_Port, LED_YELLOW_EAST_Pin, GPIO_PIN_RESET);
-      HAL_GPIO_WritePin(LED_GREEN_EAST_GPIO_Port, LED_GREEN_EAST_Pin, GPIO_PIN_SET);
-
-      HAL_Delay(2000);
-
-      HAL_GPIO_WritePin(LED_RED_WEST_GPIO_Port, LED_RED_WEST_Pin, GPIO_PIN_RESET);
-      HAL_GPIO_WritePin(LED_YELLOW_WEST_GPIO_Port, LED_YELLOW_WEST_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_GREEN_WEST_GPIO_Port, LED_GREEN_WEST_Pin, GPIO_PIN_SET);
-
-      HAL_GPIO_WritePin(LED_RED_EAST_GPIO_Port, LED_RED_EAST_Pin, GPIO_PIN_RESET);
-      HAL_GPIO_WritePin(LED_YELLOW_EAST_GPIO_Port, LED_YELLOW_EAST_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_GREEN_EAST_GPIO_Port, LED_GREEN_EAST_Pin, GPIO_PIN_SET);
-
-
-
-      HAL_GPIO_WritePin(LED_RED_NORTH_GPIO_Port, LED_RED_NORTH_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_YELLOW_NORTH_GPIO_Port, LED_YELLOW_NORTH_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_GREEN_NORTH_GPIO_Port, LED_GREEN_NORTH_Pin, GPIO_PIN_RESET);
-
-      HAL_GPIO_WritePin(LED_RED_SOUTH_GPIO_Port, LED_RED_SOUTH_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_YELLOW_SOUTH_GPIO_Port, LED_YELLOW_SOUTH_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_GREEN_SOUTH_GPIO_Port, LED_GREEN_SOUTH_Pin, GPIO_PIN_RESET);
-
-      HAL_Delay(3000);
-
-      // North & South VÀNG (2s)
-      HAL_GPIO_WritePin(LED_RED_NORTH_GPIO_Port, LED_RED_NORTH_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_YELLOW_NORTH_GPIO_Port, LED_YELLOW_NORTH_Pin, GPIO_PIN_RESET);
-      HAL_GPIO_WritePin(LED_GREEN_NORTH_GPIO_Port, LED_GREEN_NORTH_Pin, GPIO_PIN_SET);
-
-      HAL_GPIO_WritePin(LED_RED_SOUTH_GPIO_Port, LED_RED_SOUTH_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(LED_YELLOW_SOUTH_GPIO_Port, LED_YELLOW_SOUTH_Pin, GPIO_PIN_RESET);
-      HAL_GPIO_WritePin(LED_GREEN_SOUTH_GPIO_Port, LED_GREEN_SOUTH_Pin, GPIO_PIN_SET);
-
-      HAL_Delay(2000);
+    /* USER CODE END WHILE */
+	  Led(counter);
+	          counter++;
+	          if (counter >= 12) counter = 0;  // quay vòng
+	          HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -205,16 +169,16 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED_GREEN_NORTH_Pin|LED_RED_NORTH_Pin|LED_YELLOW_NORTH_Pin|LED_RED_EAST_Pin
-                          |LED_GREEN_EAST_Pin|LED_YELLOW_EAST_Pin|LED_RED_SOUTH_Pin|LED_GREEN_SOUTH_Pin
-                          |LED_YELLOW_SOUTH_Pin|LED_RED_WEST_Pin|LED_GREEN_WEST_Pin|LED_YELLOW_WEST_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, L1_Pin|L2_Pin|L3_Pin|L4_Pin
+                          |L5_Pin|L6_Pin|L7_Pin|L8_Pin
+                          |L9_Pin|L10_Pin|L11_Pin|L12_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : LED_GREEN_NORTH_Pin LED_RED_NORTH_Pin LED_YELLOW_NORTH_Pin LED_RED_EAST_Pin
-                           LED_GREEN_EAST_Pin LED_YELLOW_EAST_Pin LED_RED_SOUTH_Pin LED_GREEN_SOUTH_Pin
-                           LED_YELLOW_SOUTH_Pin LED_RED_WEST_Pin LED_GREEN_WEST_Pin LED_YELLOW_WEST_Pin */
-  GPIO_InitStruct.Pin = LED_GREEN_NORTH_Pin|LED_RED_NORTH_Pin|LED_YELLOW_NORTH_Pin|LED_RED_EAST_Pin
-                          |LED_GREEN_EAST_Pin|LED_YELLOW_EAST_Pin|LED_RED_SOUTH_Pin|LED_GREEN_SOUTH_Pin
-                          |LED_YELLOW_SOUTH_Pin|LED_RED_WEST_Pin|LED_GREEN_WEST_Pin|LED_YELLOW_WEST_Pin;
+  /*Configure GPIO pins : L1_Pin L2_Pin L3_Pin L4_Pin
+                           L5_Pin L6_Pin L7_Pin L8_Pin
+                           L9_Pin L10_Pin L11_Pin L12_Pin */
+  GPIO_InitStruct.Pin = L1_Pin|L2_Pin|L3_Pin|L4_Pin
+                          |L5_Pin|L6_Pin|L7_Pin|L8_Pin
+                          |L9_Pin|L10_Pin|L11_Pin|L12_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
