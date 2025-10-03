@@ -83,6 +83,7 @@ void setNumberOnClock(int num) {
 }
 
 //Ex9
+
 void clearNumberOnClock(int num) {
     if (num < 0 || num > 11) return;
     HAL_GPIO_WritePin(GPIOA, ledPin[num], GPIO_PIN_SET);
@@ -117,6 +118,19 @@ int main(void)
   /* USER CODE END 2 */
 
   /* Infinite loop */
+  //test ex8
+  /*
+  clearAllClock();
+  while(1){
+  setNumberOnClock(3);
+  HAL_Delay(1000);}
+  */
+  //test ex9
+ /* while(1){
+	  clearNumberOnClock(3);
+	  HAL_Delay(1000);
+  } */
+
 
   int hour = 3, minute = 30, second = 33;
   while (1)

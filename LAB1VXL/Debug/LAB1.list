@@ -37,11 +37,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  000155cc  00000000  00000000  00024698  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   000045a5  00000000  00000000  00039c64  2**0
+ 17 .debug_line   000045a7  00000000  00000000  00039c64  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000799fa  00000000  00000000  0003e209  2**0
+ 18 .debug_str    000799fa  00000000  00000000  0003e20b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000b7c03  2**0
+ 19 .comment      00000053  00000000  00000000  000b7c05  2**0
                   CONTENTS, READONLY
  20 .debug_frame  00000d94  00000000  00000000  000b7c58  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -163,10 +163,10 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
  80001aa:	f000 f889 	bl	80002c0 <MX_GPIO_Init>
+	  clearNumberOnClock(3);
+	  HAL_Delay(1000);
+  } */
 
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
 
   int hour = 3, minute = 30, second = 33;
  80001ae:	2303      	movs	r3, #3
